@@ -32,11 +32,12 @@ const pokemonPromises = generatePokemons()
 const eventSearch = () => {
     const pokeNames = document.querySelectorAll('.card-title')
     const searchInput = search.value.toLowerCase()
-
+    
     pokeNames.forEach((pokeName => {
+        const pokemonFound = pokeName.innerHTML.toLowerCase().includes(searchInput)
         pokeName.parentElement.style.display = 'block'
-
-        if(!pokeName.innerHTML.toLowerCase().includes(searchInput)) {
+        
+        if(!pokemonFound) {
             pokeName.parentElement.style.display = 'none'
         }
     }))
