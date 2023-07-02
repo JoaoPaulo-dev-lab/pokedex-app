@@ -6,6 +6,7 @@ const generatePokemons = () => Array(150).fill().map((_, index) =>
         fetch(pokemonUrl(index + 1))
             .then(response => response.json()))
 
+// O 'reduce' vai reduzir todos os 150 elementos do array em uma string (template HTML)
 const generateHTML = pokemons => pokemons.reduce((acumulador, pokemon) => {
     const types = pokemon.types
         .map(typeInfo => typeInfo.type.name)
