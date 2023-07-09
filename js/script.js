@@ -2,9 +2,11 @@ const search = document.querySelector('.search')
 
 const pokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 
-const generatePokemons = () => Array(150).fill().map((_, index) => 
-        fetch(pokemonUrl(index + 1))
-            .then(response => response.json()))
+const generatePokemons = () => Array(150).fill().map(async (_, index) => {
+    const response = await fetch(pokemonUrl(index + 1))
+    const data = await response.json()
+    return data
+})
 
 // O 'reduce' vai reduzir todos os 150 elementos do array em uma string (template HTML)
 const generateHTML = pokemons => pokemons.reduce((acumulador, pokemon) => {
